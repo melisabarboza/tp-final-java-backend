@@ -1,4 +1,4 @@
-package service;
+package com.ada.backendfinalproject.service;
 
 import org.springframework.stereotype.Service;
 

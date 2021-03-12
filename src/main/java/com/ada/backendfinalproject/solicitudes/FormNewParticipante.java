@@ -1,52 +1,33 @@
-package entity;
+package com.ada.backendfinalproject.solicitudes;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class FormNewParticipante {
 
-@Entity
-public class Participante {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idParticipante;
-
-	@Column(name = "nombre_apellido")
+	private Integer id;
 	String nombreApellido;
-
-	@Column(name = "fecha_nacimiento")
 	Date fechaDeNacimiento;
-
-	@Column(name = "genero")
-	String género;
-
-	@Column(name = "domicilio")
+	String genero;
 	String domicilio;
-
-	@Column(name = "esta_estudiando")
 	boolean estaEstudiando;
-
-	@Column(name = "esta_trabajando")
 	boolean estaTrabajando;
-
-	@Column(name = "tiene_ingresos")
 	boolean tieneIngresos;
-
-	@Column(name = "ingreso_mensual")
 	Integer ingresoMensual;
-
-	@Column(name = "tiene_familia_cargo")
 	boolean tieneFamiliaACargo;
-
-	@Column(name = "cantidad_familiares_cargo")
 	Integer familiaresACargo;
+	boolean abonaTotalCurso;
+	boolean solicitaBeca;
 
 	public String getNombreApellido() {
 		return nombreApellido;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setNombreApellido(String nombreApellido) {
@@ -61,12 +42,12 @@ public class Participante {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 
-	public String getGénero() {
-		return género;
+	public String getGenero() {
+		return genero;
 	}
 
-	public void setGénero(String género) {
-		this.género = género;
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 	public String getDomicilio() {
@@ -124,5 +105,4 @@ public class Participante {
 	public void setFamiliaresACargo(Integer familiaresACargo) {
 		this.familiaresACargo = familiaresACargo;
 	}
-
 }

@@ -1,40 +1,15 @@
-package entity;
+package com.ada.backendfinalproject.solicitudes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class FormNewOrganizacion {
 
-@Entity
-public class Organizacion {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idOrganizacion;
-
-	@Column(name = "nombre_org")
+	Integer idOrganizacion;
 	String nombreOrg;
-
-	@Column(name = "cuil_org")
 	Integer cuilOrg;
-
-	@Column(name = "tipo_org")
 	Integer TipoOrg;
-
-	@Column(name = "direccion_org")
 	String direcciónOrg;
-
-	@Column(name = "categoria_org")
 	String categoríaOrg;
-
-	@Column(name = "año_fundacion")
 	Integer añoDeFundacionOrg;
-
-	@Column(name = "numero_contacto_org")
 	Integer numeroDeContacto;
-
-	@Column(name = "id_representante_org")
 	Integer idRepresentanteOrg;
 
 	public String getNombreOrg() {
@@ -100,5 +75,4 @@ public class Organizacion {
 	public void setIdRepresentanteOrg(Integer idRepresentanteOrg) {
 		this.idRepresentanteOrg = idRepresentanteOrg;
 	}
-
 }
