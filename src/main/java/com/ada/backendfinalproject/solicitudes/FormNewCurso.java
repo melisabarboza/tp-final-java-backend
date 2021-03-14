@@ -10,6 +10,15 @@ public class FormNewCurso {
 	String categoria;
 	Integer numeroParticipantes;
 	Integer becasDisponibles;
+	Integer idOrganizacion;
+
+	public Integer getIdOrganizacion() {
+		return idOrganizacion;
+	}
+
+	public void setIdOrganizacion(Integer idOrganizacion) {
+		this.idOrganizacion = idOrganizacion;
+	}
 
 	public String getNombre() {
 		return nombre;

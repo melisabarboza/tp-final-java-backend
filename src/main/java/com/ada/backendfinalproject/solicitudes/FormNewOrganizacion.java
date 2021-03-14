@@ -4,13 +4,14 @@ public class FormNewOrganizacion {
 
 	Integer idOrganizacion;
 	String nombreOrg;
-	Integer cuilOrg;
-	Integer TipoOrg;
-	String direcciónOrg;
-	String categoríaOrg;
+	Long cuilOrg;
+	Integer tipoOrg;
+	String direccionOrg;
+	String categoriaOrg;
 	Integer añoDeFundacionOrg;
 	Integer numeroDeContacto;
 	Integer idRepresentanteOrg;
+	String estadoOrganizacion = "pendiente aprobacion";
 
 	public String getNombreOrg() {
 		return nombreOrg;
@@ -20,36 +21,36 @@ public class FormNewOrganizacion {
 		this.nombreOrg = nombreOrg;
 	}
 
-	public Integer getCuilOrg() {
+	public Long getCuilOrg() {
 		return cuilOrg;
 	}
 
-	public void setCuilOrg(Integer cuilOrg) {
+	public void setCuilOrg(Long cuilOrg) {
 		this.cuilOrg = cuilOrg;
 	}
 
 	public Integer getTipoOrg() {
-		return TipoOrg;
+		return tipoOrg;
 	}
 
 	public void setTipoOrg(Integer tipoOrg) {
-		TipoOrg = tipoOrg;
+		this.tipoOrg = tipoOrg;
 	}
 
-	public String getDirecciónOrg() {
-		return direcciónOrg;
+	public String getDireccionOrg() {
+		return direccionOrg;
 	}
 
-	public void setDirecciónOrg(String direcciónOrg) {
-		this.direcciónOrg = direcciónOrg;
+	public void setDireccionOrg(String direcciónOrg) {
+		this.direccionOrg = direcciónOrg;
 	}
 
-	public String getCategoríaOrg() {
-		return categoríaOrg;
+	public String getCategoriaOrg() {
+		return categoriaOrg;
 	}
 
-	public void setCategoríaOrg(String categoríaOrg) {
-		this.categoríaOrg = categoríaOrg;
+	public void setCategoriaOrg(String categoríaOrg) {
+		this.categoriaOrg = categoríaOrg;
 	}
 
 	public Integer getAñoDeFundacionOrg() {
@@ -74,5 +75,21 @@ public class FormNewOrganizacion {
 
 	public void setIdRepresentanteOrg(Integer idRepresentanteOrg) {
 		this.idRepresentanteOrg = idRepresentanteOrg;
+	}
+
+	public Integer getIdOrganizacion() {
+		return idOrganizacion;
+	}
+
+	public void setIdOrganizacion(Integer idOrganizacion) {
+		this.idOrganizacion = idOrganizacion;
+	}
+
+	public String getEstadoOrganizacion() {
+		return estadoOrganizacion;
+	}
+
+	public void setEstadoOrganizacion(String estadoOrganizacion) {
+		this.estadoOrganizacion = estadoOrganizacion;
 	}
 }

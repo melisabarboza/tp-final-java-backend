@@ -38,14 +38,14 @@ public class Curso {
 	Integer becasDisponibles;
 
 	@Column(name = "id_organizacion")
-	private Integer idOrganizacion;
+	Integer idOrganizacion;
 
 	public Curso() {
 
 	}
 
 	public Curso(Integer id, String nombre, String descripcion, String modalidad, Integer costo, Integer horas,
-			String categoria, Integer numeroParticipantes, Integer becasDisponibles) {
+			String categoria, Integer numeroParticipantes, Integer becasDisponibles, Integer idOrganizacion) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -55,6 +55,7 @@ public class Curso {
 		this.categoria = categoria;
 		this.numeroParticipantes = numeroParticipantes;
 		this.becasDisponibles = becasDisponibles;
+		this.idOrganizacion = idOrganizacion;
 	}
 
 	public Integer getId() {
@@ -127,5 +128,13 @@ public class Curso {
 
 	public void setBecasDisponibles(Integer becasDisponibles) {
 		this.becasDisponibles = becasDisponibles;
+	}
+
+	public Integer getIdOrganizacion() {
+		return idOrganizacion;
+	}
+
+	public void setIdOrganizacion(Integer idOrganizacion) {
+		this.idOrganizacion = idOrganizacion;
 	}
 }

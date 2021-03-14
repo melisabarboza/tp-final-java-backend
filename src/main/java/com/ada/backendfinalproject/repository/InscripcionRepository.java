@@ -8,4 +8,6 @@ import com.ada.backendfinalproject.entity.Inscripcion;
 @Repository
 public interface InscripcionRepository extends CrudRepository<Inscripcion, Integer> {
 
+	Iterable<Inscripcion> findByIdParticipante(Integer idParticipante);
+
 }

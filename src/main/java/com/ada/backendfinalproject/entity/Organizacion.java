@@ -12,16 +12,16 @@ public class Organizacion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Integer idOrganizacion;
+	Integer idOrganizacion;
 
 	@Column(name = "nombre")
 	String nombre;
 
 	@Column(name = "cuil")
-	Integer cuil;
+	Long cuil;
 
 	@Column(name = "tipo")
-	Integer Tipo;
+	Integer tipo;
 
 	@Column(name = "direccion")
 	String direccion;
@@ -38,6 +38,29 @@ public class Organizacion {
 	@Column(name = "id_representante")
 	Integer idRepresentante;
 
+	@Column(name = "estado_organizacion")
+	String estadoOrganizacion;
+
+	public Organizacion() {
+
+	}
+
+	public Organizacion(Integer idOrganizacion, String nombre, Long cuil, Integer tipo, String direccion,
+			String categoria, Integer añoDeFundacion, Integer numeroDeContacto, Integer idRepresentante,
+			String estadoOrganizacion) {
+		super();
+		this.idOrganizacion = idOrganizacion;
+		this.nombre = nombre;
+		this.cuil = cuil;
+		this.tipo = tipo;
+		this.direccion = direccion;
+		this.categoria = categoria;
+		this.añoDeFundacion = añoDeFundacion;
+		this.numeroDeContacto = numeroDeContacto;
+		this.idRepresentante = idRepresentante;
+		this.estadoOrganizacion = estadoOrganizacion;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -46,20 +69,20 @@ public class Organizacion {
 		this.nombre = nombre;
 	}
 
-	public Integer getCuil() {
+	public Long getCuil() {
 		return cuil;
 	}
 
-	public void setCuil(Integer cuil) {
+	public void setCuil(Long cuil) {
 		this.cuil = cuil;
 	}
 
 	public Integer getTipo() {
-		return Tipo;
+		return tipo;
 	}
 
 	public void setTipo(Integer tipo) {
-		Tipo = tipo;
+		this.tipo = tipo;
 	}
 
 	public String getDireccion() {
@@ -100,5 +123,13 @@ public class Organizacion {
 
 	public void setIdRepresentante(Integer idRepresentante) {
 		this.idRepresentante = idRepresentante;
+	}
+
+	public String getEstadoOrganizacion() {
+		return estadoOrganizacion;
+	}
+
+	public void setEstadoOrganizacion(String estadoOrganizacion) {
+		this.estadoOrganizacion = estadoOrganizacion;
 	}
 }

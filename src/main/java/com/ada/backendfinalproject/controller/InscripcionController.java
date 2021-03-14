@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ada.backendfinalproject.entity.Inscripcion;
 import com.ada.backendfinalproject.service.InscripcionService;
-import com.ada.backendfinalproject.solicitudes.FormNewParticipante;
+import com.ada.backendfinalproject.solicitudes.FormNewInscripcion;
 
 @RestController
 @RequestMapping(path = "/inscripciones")
@@ -19,17 +19,19 @@ public class InscripcionController {
 	private InscripcionService inscripcionService;
 
 	@PostMapping(path = "/add")
-	public @ResponseBody Inscripcion add(@RequestBody FormNewParticipante solicitud) throws Exception {
+	public @ResponseBody Inscripcion add(@RequestBody FormNewInscripcion solicitud) throws Exception {
 
-		// valido que lleguen los parametros necesarios para guardar un curso
+		// valido que lleguen los parametros necesarios para guardar una inscripcion
 
 		// if (solicitud.getNombre() == null || solicitud.getNombre() == "") {
 		// throw new Exception("la solicitud debe contener un nombre valido");
 		// }
 		// TODO: agregar otras validaciones
 
-		Inscripcion newInscripcion = InscripcionService.addNewInscripcion(solicitud);
+		Inscripcion newInscripcion = inscripcionService.addNewInscripcion(solicitud);
 
 		return newInscripcion;
 	}
+
+	// APROBAR INSCRIPCION
 }

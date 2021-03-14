@@ -32,38 +32,41 @@ public class CursoController {
 		// TODO: agregar otras validaciones
 
 		Curso cursoCreado = cursoService.addNewCurso(solicitud);
-
 		return cursoCreado;
 	}
 
 	@GetMapping(path = "/disponibles") // cursos disponibles (con cupos abiertos)
 	public @ResponseBody List<Curso> getCursosDisponibles() {
+
 		List<Curso> cursosDisponibles = cursoService.getCursosDisponibles();
 		return cursosDisponibles;
 	}
 
 	@GetMapping(path = "/categorias") // Todos los cursos por categoría public
 	public @ResponseBody List<Curso> getCursosPorCategorias(@RequestParam String categoria) {
-		List<Curso> cursosPorCategoria = cursoService.getCursosPorCategoria(categoria);
 
+		List<Curso> cursosPorCategoria = cursoService.getCursosPorCategoria(categoria);
 		return cursosPorCategoria;
 	}
 
 	@GetMapping(path = "/organizaciones") // Todos los cursos por organización
 	public @ResponseBody List<Curso> getCursosPorOrganizacion(@RequestParam Integer idOrganizacion) {
+
 		List<Curso> cursosPorOrganizacion = cursoService.getCursosPorOrganizacion(idOrganizacion);
 		return cursosPorOrganizacion;
 	}
 
+	@GetMapping(path = "/participantes/progreso") // Todos los cursos por participante (en progreso)
+	public @ResponseBody Iterable<Curso> getCursosEnProgresoPorParticipante(@RequestParam Integer idParticipante) {
+
+		Iterable<Curso> cursosEnProgreso = cursoService.getCursosEnProgresoPorParticipante(idParticipante);
+		return cursosEnProgreso;
+	}
+
 	/*
-	 * @GetMapping(path = "/participantes") // Todos los cursos por participante (en
-	 * progreso) public List<Curso> getCursosPorParticipantes() { List<Curso>
-	 * cursosPorParticipantes = cursoService.getCursosPorParticipantes(); return
-	 * cursosPorParticipantes; }
-	 * 
-	 * @GetMapping(path = "/finalizados") // Todos los cursos por participante
-	 * (finalizados) public List<Curso> getCursosFinalizados() { List<Curso>
-	 * cursosFinalizados = cursoService.getCursosFinalizados(); return
+	 * @GetMapping(path = "/participantes/finalizados") // Todos los cursos por
+	 * participante (finalizados) public List<Curso> getCursosFinalizados() {
+	 * List<Curso> cursosFinalizados = cursoService.getCursosFinalizados(); return
 	 * cursosFinalizados; }
 	 * 
 	 * @GetMapping(path = "/org/cat") // Todos los cursos por organización y

@@ -13,37 +13,65 @@ public class Participante {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer idParticipante;
+	@Column(name = "id")
+	Integer idParticipante;
 
 	@Column(name = "nombre_apellido")
 	String nombreApellido;
 
-	@Column(name = "fecha_nacimiento")
-	Date fechaDeNacimiento;
+	@Column(name = "fn")
+	Date fn;
 
 	@Column(name = "genero")
-	String género;
+	String genero;
 
 	@Column(name = "domicilio")
 	String domicilio;
 
-	@Column(name = "esta_estudiando")
-	boolean estaEstudiando;
+	@Column(name = "estudia")
+	Boolean estaEstudiando;
 
-	@Column(name = "esta_trabajando")
-	boolean estaTrabajando;
+	@Column(name = "trabaja")
+	Boolean estaTrabajando;
 
 	@Column(name = "tiene_ingresos")
-	boolean tieneIngresos;
+	Boolean tieneIngresos;
 
 	@Column(name = "ingreso_mensual")
 	Integer ingresoMensual;
 
-	@Column(name = "tiene_familia_cargo")
-	boolean tieneFamiliaACargo;
-
-	@Column(name = "cantidad_familiares_cargo")
+	@Column(name = "cantidad_familiares_a_cargo")
 	Integer familiaresACargo;
+
+	public Participante() {
+
+	}
+
+	public Participante(Integer idParticipante, String nombreApellido, Date fn, String genero, String domicilio,
+			boolean estaEstudiando, boolean estaTrabajando, boolean tieneIngresos, Integer ingresoMensual,
+			Integer familiaresACargo) {
+		super();
+		this.idParticipante = idParticipante;
+		this.nombreApellido = nombreApellido;
+		this.fn = fn;
+		this.genero = genero;
+		this.domicilio = domicilio;
+		this.estaEstudiando = estaEstudiando;
+		this.estaTrabajando = estaTrabajando;
+		this.tieneIngresos = tieneIngresos;
+		this.ingresoMensual = ingresoMensual;
+		this.familiaresACargo = familiaresACargo;
+
+	}
+
+	public Boolean DatosSocioEconomicosCargados() {
+
+		if (this.estaEstudiando != null && this.estaTrabajando != null && this.tieneIngresos != null
+				&& this.familiaresACargo != null) {
+			return true;
+		}
+		return false;
+	}
 
 	public String getNombreApellido() {
 		return nombreApellido;
@@ -53,20 +81,20 @@ public class Participante {
 		this.nombreApellido = nombreApellido;
 	}
 
-	public Date getFechaDeNacimiento() {
-		return fechaDeNacimiento;
+	public Date getFn() {
+		return fn;
 	}
 
-	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
-		this.fechaDeNacimiento = fechaDeNacimiento;
+	public void setFn(Date fn) {
+		this.fn = fn;
 	}
 
-	public String getGénero() {
-		return género;
+	public String getGenero() {
+		return genero;
 	}
 
-	public void setGénero(String género) {
-		this.género = género;
+	public void setGenero(String genero) {
+		this.genero = genero;
 	}
 
 	public String getDomicilio() {
@@ -109,14 +137,6 @@ public class Participante {
 		this.ingresoMensual = ingresoMensual;
 	}
 
-	public boolean isTieneFamiliaACargo() {
-		return tieneFamiliaACargo;
-	}
-
-	public void setTieneFamiliaACargo(boolean tieneFamiliaACargo) {
-		this.tieneFamiliaACargo = tieneFamiliaACargo;
-	}
-
 	public Integer getFamiliaresACargo() {
 		return familiaresACargo;
 	}
@@ -124,5 +144,4 @@ public class Participante {
 	public void setFamiliaresACargo(Integer familiaresACargo) {
 		this.familiaresACargo = familiaresACargo;
 	}
-
 }

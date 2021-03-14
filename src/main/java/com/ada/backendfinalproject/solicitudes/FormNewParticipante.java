@@ -4,19 +4,18 @@ import java.util.Date;
 
 public class FormNewParticipante {
 
-	private Integer id;
+	Integer id;
 	String nombreApellido;
 	Date fechaDeNacimiento;
 	String genero;
 	String domicilio;
-	boolean estaEstudiando;
-	boolean estaTrabajando;
-	boolean tieneIngresos;
+	Boolean estaEstudiando;
+	Boolean estaTrabajando;
+	Boolean tieneIngresos;
 	Integer ingresoMensual;
-	boolean tieneFamiliaACargo;
 	Integer familiaresACargo;
-	boolean abonaTotalCurso;
-	boolean solicitaBeca;
+	Boolean abonaTotalCurso;
+	Boolean solicitaBeca;
 
 	public String getNombreApellido() {
 		return nombreApellido;
@@ -58,27 +57,27 @@ public class FormNewParticipante {
 		this.domicilio = domicilio;
 	}
 
-	public boolean isEstaEstudiando() {
+	public Boolean isEstaEstudiando() {
 		return estaEstudiando;
 	}
 
-	public void setEstaEstudiando(boolean estaEstudiando) {
+	public void setEstaEstudiando(Boolean estaEstudiando) {
 		this.estaEstudiando = estaEstudiando;
 	}
 
-	public boolean isEstaTrabajando() {
+	public Boolean isEstaTrabajando() {
 		return estaTrabajando;
 	}
 
-	public void setEstaTrabajando(boolean estaTrabajando) {
+	public void setEstaTrabajando(Boolean estaTrabajando) {
 		this.estaTrabajando = estaTrabajando;
 	}
 
-	public boolean isTieneIngresos() {
+	public Boolean isTieneIngresos() {
 		return tieneIngresos;
 	}
 
-	public void setTieneIngresos(boolean tieneIngresos) {
+	public void setTieneIngresos(Boolean tieneIngresos) {
 		this.tieneIngresos = tieneIngresos;
 	}
 
@@ -90,19 +89,27 @@ public class FormNewParticipante {
 		this.ingresoMensual = ingresoMensual;
 	}
 
-	public boolean isTieneFamiliaACargo() {
-		return tieneFamiliaACargo;
-	}
-
-	public void setTieneFamiliaACargo(boolean tieneFamiliaACargo) {
-		this.tieneFamiliaACargo = tieneFamiliaACargo;
-	}
-
 	public Integer getFamiliaresACargo() {
 		return familiaresACargo;
 	}
 
 	public void setFamiliaresACargo(Integer familiaresACargo) {
 		this.familiaresACargo = familiaresACargo;
+	}
+
+	public Boolean isAbonaTotalCurso() {
+		return abonaTotalCurso;
+	}
+
+	public void setAbonaTotalCurso(Boolean abonaTotalCurso) {
+		this.abonaTotalCurso = abonaTotalCurso;
+	}
+
+	public Boolean isSolicitaBeca() {
+		return solicitaBeca;
+	}
+
+	public void setSolicitaBeca(Boolean solicitaBeca) {
+		this.solicitaBeca = solicitaBeca;
 	}
 }
