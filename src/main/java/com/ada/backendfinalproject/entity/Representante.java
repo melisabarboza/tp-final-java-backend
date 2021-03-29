@@ -29,6 +29,17 @@ public class Representante {
 	@Column(name = "email")
 	String email;
 
+	public Representante(Integer idRepresentante, Integer idOrganizacion, String nombreApellido, Long dni, String cargo,
+			String email) {
+		super();
+		this.idRepresentante = idRepresentante;
+		this.idOrganizacion = idOrganizacion;
+		this.nombreApellido = nombreApellido;
+		this.dni = dni;
+		this.cargo = cargo;
+		this.email = email;
+	}
+
 	public Integer getIdRepresentante() {
 		return idRepresentante;
 	}

@@ -2,24 +2,15 @@ package com.ada.backendfinalproject.solicitudes;
 
 public class FormUsuario {
 
-	Integer idUsuario;
-	Integer usuario;
+	String usuario;
 	String contraseña;
 	String rol;
 
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
-	public Integer getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Integer usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 

@@ -94,12 +94,13 @@ y no debe tener un curso en progreso con beca adjudicado
 La aprobación de las becas está a cargo del admin del sistema y este podrá adjudicar un 50%, 75% o 100% de la beca 
 o en su defecto denegar la misma
 El admin también tiene la responsabilidad de indicar si la persona ha finalizado un curso
-El motor de búsqueda de cursos debe contemplar los siguientes criterios:
+++++++++++++++++++
+El motor de búsqueda de cursos debe contemplar los siguientes criterios:d
 Todos los cursos disponibles (con cupos abiertos)
 
 Todos los cursos por categoría  -------------------
 Todos los cursos por organización ---------------------
-Todos los cursos por participante (en progreso) -----------------
-Todos los cursos por participante (finalizados)
-Todos los cursos por organización y categoría
+Todos los cursos por participante (en progreso - APROBADO) -----------------
+Todos los cursos por participante (finalizados)-----------------
+Todos los cursos por organización y categoría -----------------
   

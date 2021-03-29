@@ -10,4 +10,6 @@ public interface InscripcionRepository extends CrudRepository<Inscripcion, Integ
 
 	Iterable<Inscripcion> findByIdParticipante(Integer idParticipante);
 
+	Iterable<Inscripcion> findByIdParticipanteAndEstadoInscripcion(Integer idParticipante, String estadoInscripcion);
+
 }

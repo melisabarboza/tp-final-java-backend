@@ -137,4 +137,13 @@ public class Curso {
 	public void setIdOrganizacion(Integer idOrganizacion) {
 		this.idOrganizacion = idOrganizacion;
 	}
+
+	public void restarBeca() {
+		this.becasDisponibles--;
+	}
+
+	public void restarVacante() {
+		this.numeroParticipantes--;
+	}
+
 }

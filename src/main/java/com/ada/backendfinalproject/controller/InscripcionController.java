@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ada.backendfinalproject.entity.Inscripcion;
 import com.ada.backendfinalproject.service.InscripcionService;
+import com.ada.backendfinalproject.solicitudes.FormCambiarEstadoInscripcion;
+import com.ada.backendfinalproject.solicitudes.FormFinalizarInscripcion;
 import com.ada.backendfinalproject.solicitudes.FormNewInscripcion;
 
 @RestController
@@ -33,5 +35,18 @@ public class InscripcionController {
 		return newInscripcion;
 	}
 
-	// APROBAR INSCRIPCION
+	@PostMapping(path = "/estado")
+	public @ResponseBody Inscripcion cambiarEstado(@RequestBody FormCambiarEstadoInscripcion solicitud)
+			throws Exception {
+
+		return inscripcionService.cambiarEstado(solicitud);
+
+	}
+
+	@PostMapping(path = "/finalizar")
+	public @ResponseBody Inscripcion cambiarEstado(@RequestBody FormFinalizarInscripcion solicitud) throws Exception {
+
+		return inscripcionService.finalizar(solicitud);
+
+	}
 }

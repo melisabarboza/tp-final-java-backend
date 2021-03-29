@@ -2,20 +2,13 @@ package com.ada.backendfinalproject.solicitudes;
 
 public class FormRepresentante {
 
-	Integer idRepresentante;
+	String usuario;
+	String contraseña;
 	Integer idOrganizacion;
 	String nombreApellido;
 	Long dni;
 	String cargo;
 	String email;
-
-	public Integer getIdRepresentante() {
-		return idRepresentante;
-	}
-
-	public void setIdRepresentante(Integer idRepresentante) {
-		this.idRepresentante = idRepresentante;
-	}
 
 	public Integer getIdOrganizacion() {
 		return idOrganizacion;
@@ -57,4 +50,19 @@ public class FormRepresentante {
 		this.email = email;
 	}
 
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
 }

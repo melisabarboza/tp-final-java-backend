@@ -15,13 +15,21 @@ public class Usuario {
 	Integer idUsuario;
 
 	@Column(name = "usuario")
-	Integer usuario;
+	String usuario;
 
 	@Column(name = "contraseña")
-	Integer contraseña;
+	String contraseña;
 
 	@Column(name = "rol")
 	String rol;
+
+	public Usuario(Integer idUsuario, String usuario, String contraseña, String rol) {
+		super();
+		this.idUsuario = idUsuario;
+		this.usuario = usuario;
+		this.contraseña = contraseña;
+		this.rol = rol;
+	}
 
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -31,19 +39,19 @@ public class Usuario {
 		this.idUsuario = idUsuario;
 	}
 
-	public Integer getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Integer usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 
-	public Integer getContraseña() {
+	public String getContraseña() {
 		return contraseña;
 	}
 
-	public void setContraseña(Integer contraseña) {
+	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
 

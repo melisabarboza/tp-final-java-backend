@@ -63,15 +63,16 @@ public class CursoController {
 		return cursosEnProgreso;
 	}
 
-	/*
-	 * @GetMapping(path = "/participantes/finalizados") // Todos los cursos por
-	 * participante (finalizados) public List<Curso> getCursosFinalizados() {
-	 * List<Curso> cursosFinalizados = cursoService.getCursosFinalizados(); return
-	 * cursosFinalizados; }
-	 * 
-	 * @GetMapping(path = "/org/cat") // Todos los cursos por organización y
-	 * categoría public List<Curso> getCursosPorCatOrg() { List<Curso>
-	 * cursosPorCatOrg = cursoService.getCursosPorCatOrg(); return cursosPorCatOrg;
-	 * }
-	 */
+	@GetMapping(path = "/participantes/finalizados")
+	public Iterable<Curso> getCursosFinalizados(@RequestParam Integer idParticipante) {
+		Iterable<Curso> cursosFinalizados = cursoService.getCursosFinalizadosPorParticipante(idParticipante);
+		return cursosFinalizados;
+	}
+
+	@GetMapping(path = "/orgaycateg")
+	public Iterable<Curso> getCursosPorCatOrg(@RequestParam Integer idOrganizacion, @RequestParam String categoria) {
+		Iterable<Curso> cursosPorCatOrg = cursoService.getCursosPorCatOrg(idOrganizacion, categoria);
+		return cursosPorCatOrg;
+	}
+
 }

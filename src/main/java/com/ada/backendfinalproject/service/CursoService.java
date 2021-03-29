@@ -2,6 +2,7 @@ package com.ada.backendfinalproject.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,9 @@ public class CursoService {
 		Iterable<Curso> itCursos = cursoRepository.findAll();
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 		itCursos.forEach(curso -> {
-			cursos.add(curso);
+			if (curso.getNumeroParticipantes() > 0) {
+				cursos.add(curso);
+			}
 		});
 		return cursos;
 	}
@@ -68,7 +71,7 @@ public class CursoService {
 	public Iterable<Curso> getCursosEnProgresoPorParticipante(Integer idParticipante) {
 
 		Iterable<Inscripcion> inscripcionesDelParticipante = inscripcionService
-				.getInscripcionPorIdParticipante(idParticipante);
+				.getInscripcionAprobadasPorIdParticipante(idParticipante);
 		// Creo una lista inscripcion y guardo las inscripciones con ese ID recibido
 
 		List<Integer> listaIdCursoParticipante = new ArrayList<Integer>();
@@ -82,15 +85,44 @@ public class CursoService {
 		return cursosDelParticipante;
 	}
 
-	/*
-	 * public List<Curso> getCursosFinalizados() { Iterable<Curso> itCursos =
-	 * cursoRepository.findByFinalizados(); ArrayList<Curso> cursos = new
-	 * ArrayList<Curso>(); itCursos.forEach(curso -> { cursos.add(curso); }); return
-	 * cursos; }
-	 * 
-	 * public List<Curso> getCursosPorCatOrg() { Iterable<Curso> itCursos =
-	 * cursoRepository.findByCatOrg(); ArrayList<Curso> cursos = new
-	 * ArrayList<Curso>(); itCursos.forEach(curso -> { cursos.add(curso); }); return
-	 * cursos; }
-	 */
+	public Optional<Curso> getCursoById(Integer idCurso) {
+
+		Optional<Curso> curso = cursoRepository.findById(idCurso);
+		return curso;
+	}
+
+	public void restarVacante(Integer idCurso) {
+
+		Optional<Curso> curso = cursoRepository.findById(idCurso);
+		curso.get().restarVacante();
+		cursoRepository.save(curso.get());
+	}
+
+	public void restarVacanteYBeca(Integer idCurso) {
+
+		Optional<Curso> curso = cursoRepository.findById(idCurso);
+		curso.get().restarBeca();
+		curso.get().restarVacante();
+		cursoRepository.save(curso.get());
+	}
+
+	public Iterable<Curso> getCursosFinalizadosPorParticipante(Integer idParticipante) {
+
+		Iterable<Inscripcion> inscripcionesDelParticipante = inscripcionService
+				.getInscripcionFinalizadaPorIdParticipante(idParticipante);
+
+		List<Integer> listaIdCursoParticipante = new ArrayList<Integer>();
+		inscripcionesDelParticipante.forEach(inscripcion -> {
+			listaIdCursoParticipante.add(inscripcion.getIdCurso());
+		});
+
+		Iterable<Curso> cursosDelParticipante = cursoRepository.findAllById(listaIdCursoParticipante);
+
+		return cursosDelParticipante;
+	}
+
+	public Iterable<Curso> getCursosPorCatOrg(Integer idOrganizacion, String categoria) {
+		return cursoRepository.findByIdOrganizacionAndCategoria(idOrganizacion, categoria);
+	}
+
 }

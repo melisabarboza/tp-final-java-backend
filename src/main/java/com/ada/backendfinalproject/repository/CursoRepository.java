@@ -12,4 +12,6 @@ public interface CursoRepository extends CrudRepository<Curso, Integer> {
 
 	Iterable<Curso> findByIdOrganizacion(Integer idOrganizacion);
 
+	Iterable<Curso> findByIdOrganizacionAndCategoria(Integer idOrganizacion, String categoria);
+
 }
