@@ -1,4 +1,4 @@
-package security.jwt;
+package com.ada.backendfinalproject.security.jwt;
 
 import java.io.IOException;
 
@@ -13,10 +13,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.ada.backendfinalproject.security.Constants;
+import com.ada.backendfinalproject.security.TokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import security.Constants;
-import security.TokenProvider;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 

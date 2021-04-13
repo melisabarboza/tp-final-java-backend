@@ -1,4 +1,4 @@
-package security.jwt;
+package com.ada.backendfinalproject.security.jwt;
 
 import java.io.IOException;
 
@@ -13,10 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.ada.backendfinalproject.security.Constants;
+import com.ada.backendfinalproject.security.TokenProvider;
 import com.ada.backendfinalproject.service.UsuarioService;
-
-import security.Constants;
-import security.TokenProvider;
 
 public class JwtAuthorizationFilter extends OncePerRequestFilter {
 

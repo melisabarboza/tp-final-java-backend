@@ -17,11 +17,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.ada.backendfinalproject.security.jwt.JwtAuthenticationFilter;
+import com.ada.backendfinalproject.security.jwt.JwtAuthorizationFilter;
+
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import security.jwt.JwtAuthenticationFilter;
-import security.jwt.JwtAuthorizationFilter;
 
 @SpringBootApplication
 public class BackendFinalProjectApplication {

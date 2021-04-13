@@ -1,4 +1,4 @@
-package security.jwt;
+package com.ada.backendfinalproject.security.jwt;
 
 import java.io.IOException;
 import java.util.Date;

@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ada.backendfinalproject.entity.Participante;
 import com.ada.backendfinalproject.entity.Representante;
 import com.ada.backendfinalproject.entity.Usuario;
+import com.ada.backendfinalproject.security.Constants;
+import com.ada.backendfinalproject.security.TokenProvider;
 import com.ada.backendfinalproject.service.AdminService;
 import com.ada.backendfinalproject.service.ParticipanteService;
 import com.ada.backendfinalproject.service.RepresentanteService;
@@ -30,9 +32,6 @@ import com.ada.backendfinalproject.solicitudes.FormLogIn;
 import com.ada.backendfinalproject.solicitudes.FormParticipante;
 import com.ada.backendfinalproject.solicitudes.FormRepresentante;
 import com.ada.backendfinalproject.solicitudes.FormUsuario;
-
-import security.Constants;
-import security.TokenProvider;
 
 @RestController
 @RequestMapping(path = "/usuario")

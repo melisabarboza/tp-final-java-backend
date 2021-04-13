@@ -15,9 +15,8 @@ import org.springframework.stereotype.Service;
 import com.ada.backendfinalproject.entity.Usuario;
 import com.ada.backendfinalproject.entity.enums.RolUsuario;
 import com.ada.backendfinalproject.repository.UsuarioRepository;
+import com.ada.backendfinalproject.security.UserDetailsMapper;
 import com.ada.backendfinalproject.solicitudes.FormUsuario;
-
-import security.UserDetailsMapper;
 
 @Service("userDetailsService")
 public class UsuarioService implements UserDetailsService {
