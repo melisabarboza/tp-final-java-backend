@@ -17,6 +17,9 @@ public class Representante {
 	@Column(name = "id_organizacion")
 	Integer idOrganizacion;
 
+	@Column(name = "usuario")
+	String usuario;
+
 	@Column(name = "nombre_apellido")
 	String nombreApellido;
 
@@ -29,15 +32,28 @@ public class Representante {
 	@Column(name = "email")
 	String email;
 
-	public Representante(Integer idRepresentante, Integer idOrganizacion, String nombreApellido, Long dni, String cargo,
-			String email) {
+	public Representante() {
+
+	}
+
+	public Representante(Integer idRepresentante, Integer idOrganizacion, String usuario, String nombreApellido,
+			Long dni, String cargo, String email) {
 		super();
 		this.idRepresentante = idRepresentante;
 		this.idOrganizacion = idOrganizacion;
+		this.usuario = usuario;
 		this.nombreApellido = nombreApellido;
 		this.dni = dni;
 		this.cargo = cargo;
 		this.email = email;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public Integer getIdRepresentante() {

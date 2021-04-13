@@ -2,11 +2,10 @@ package com.ada.backendfinalproject.solicitudes;
 
 import java.util.Date;
 
-public class FormNewParticipante {
+public class FormParticipante {
 
 	Integer id;
 	String usuario;
-	String contraseña;
 	String nombreApellido;
 	Date fechaDeNacimiento;
 	String genero;
@@ -16,8 +15,6 @@ public class FormNewParticipante {
 	Boolean tieneIngresos;
 	Integer ingresoMensual;
 	Integer familiaresACargo;
-	Boolean abonaTotalCurso;
-	Boolean solicitaBeca;
 
 	public String getNombreApellido() {
 		return nombreApellido;
@@ -99,36 +96,12 @@ public class FormNewParticipante {
 		this.familiaresACargo = familiaresACargo;
 	}
 
-	public Boolean isAbonaTotalCurso() {
-		return abonaTotalCurso;
-	}
-
-	public void setAbonaTotalCurso(Boolean abonaTotalCurso) {
-		this.abonaTotalCurso = abonaTotalCurso;
-	}
-
-	public Boolean isSolicitaBeca() {
-		return solicitaBeca;
-	}
-
-	public void setSolicitaBeca(Boolean solicitaBeca) {
-		this.solicitaBeca = solicitaBeca;
-	}
-
 	public String getUsuario() {
 		return usuario;
 	}
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
 	}
 
 }

@@ -3,7 +3,6 @@ package com.ada.backendfinalproject.solicitudes;
 public class FormRepresentante {
 
 	String usuario;
-	String contraseña;
 	Integer idOrganizacion;
 	String nombreApellido;
 	Long dni;
@@ -56,13 +55,5 @@ public class FormRepresentante {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
 	}
 }

@@ -1,6 +1,7 @@
 package com.ada.backendfinalproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class InscripcionController {
 	private InscripcionService inscripcionService;
 
 	@PostMapping(path = "/add")
+	@PreAuthorize("hasRole('ROLE_PARTICIPANTE')")
 	public @ResponseBody Inscripcion add(@RequestBody FormNewInscripcion solicitud) throws Exception {
 
 		// valido que lleguen los parametros necesarios para guardar una inscripcion
@@ -36,6 +38,7 @@ public class InscripcionController {
 	}
 
 	@PostMapping(path = "/estado")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public @ResponseBody Inscripcion cambiarEstado(@RequestBody FormCambiarEstadoInscripcion solicitud)
 			throws Exception {
 
@@ -44,6 +47,7 @@ public class InscripcionController {
 	}
 
 	@PostMapping(path = "/finalizar")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public @ResponseBody Inscripcion cambiarEstado(@RequestBody FormFinalizarInscripcion solicitud) throws Exception {
 
 		return inscripcionService.finalizar(solicitud);

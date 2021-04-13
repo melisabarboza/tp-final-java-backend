@@ -6,10 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.ada.backendfinalproject.entity.enums.RolUsuario;
-
 @Entity
-public class Usuario {
+public class Admin {
+	public Admin() {
+
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,26 +23,11 @@ public class Usuario {
 	@Column(name = "contraseña")
 	String contraseña;
 
-	@Column(name = "rol")
-	String rol;
-
-	public RolUsuario getRol() {
-		return RolUsuario.valueOf(this.rol);
-	}
-
-	public void setRol(RolUsuario rol) {
-		this.rol = rol.name();
-	}
-
-	public Usuario() {
-
-	}
-
-	public Usuario(Integer idUsuario, String usuario, String contraseña, RolUsuario rol) {
+	public Admin(Integer idUsuario, String usuario, String contraseña) {
+		super();
 		this.idUsuario = idUsuario;
 		this.usuario = usuario;
 		this.contraseña = contraseña;
-		this.rol = rol.name();
 
 	}
 

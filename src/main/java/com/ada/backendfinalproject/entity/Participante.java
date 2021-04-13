@@ -16,6 +16,9 @@ public class Participante {
 	@Column(name = "id")
 	Integer idParticipante;
 
+	@Column(name = "usuario")
+	String usuario;
+
 	@Column(name = "nombre_apellido")
 	String nombreApellido;
 
@@ -47,11 +50,12 @@ public class Participante {
 
 	}
 
-	public Participante(Integer idParticipante, String nombreApellido, Date fn, String genero, String domicilio,
-			boolean estaEstudiando, boolean estaTrabajando, boolean tieneIngresos, Integer ingresoMensual,
-			Integer familiaresACargo) {
+	public Participante(Integer idParticipante, String usuario, String nombreApellido, Date fn, String genero,
+			String domicilio, boolean estaEstudiando, boolean estaTrabajando, boolean tieneIngresos,
+			Integer ingresoMensual, Integer familiaresACargo) {
 		super();
 		this.idParticipante = idParticipante;
+		this.usuario = usuario;
 		this.nombreApellido = nombreApellido;
 		this.fn = fn;
 		this.genero = genero;
@@ -71,6 +75,14 @@ public class Participante {
 			return true;
 		}
 		return false;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getNombreApellido() {

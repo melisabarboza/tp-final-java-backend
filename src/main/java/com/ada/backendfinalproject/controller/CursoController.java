@@ -3,6 +3,7 @@ package com.ada.backendfinalproject.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,7 @@ public class CursoController {
 	private CursoService cursoService;
 
 	@PostMapping(path = "/add")
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE')")
 	public @ResponseBody Curso addNewCurso(@RequestBody FormNewCurso solicitud) throws Exception {
 
 		// valido que lleguen los parametros necesarios para guardar un curso
@@ -36,6 +38,7 @@ public class CursoController {
 	}
 
 	@GetMapping(path = "/disponibles") // cursos disponibles (con cupos abiertos)
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody List<Curso> getCursosDisponibles() {
 
 		List<Curso> cursosDisponibles = cursoService.getCursosDisponibles();
@@ -43,6 +46,7 @@ public class CursoController {
 	}
 
 	@GetMapping(path = "/categorias") // Todos los cursos por categoría public
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody List<Curso> getCursosPorCategorias(@RequestParam String categoria) {
 
 		List<Curso> cursosPorCategoria = cursoService.getCursosPorCategoria(categoria);
@@ -50,6 +54,7 @@ public class CursoController {
 	}
 
 	@GetMapping(path = "/organizaciones") // Todos los cursos por organización
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody List<Curso> getCursosPorOrganizacion(@RequestParam Integer idOrganizacion) {
 
 		List<Curso> cursosPorOrganizacion = cursoService.getCursosPorOrganizacion(idOrganizacion);
@@ -57,6 +62,7 @@ public class CursoController {
 	}
 
 	@GetMapping(path = "/participantes/progreso") // Todos los cursos por participante (en progreso)
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody Iterable<Curso> getCursosEnProgresoPorParticipante(@RequestParam Integer idParticipante) {
 
 		Iterable<Curso> cursosEnProgreso = cursoService.getCursosEnProgresoPorParticipante(idParticipante);
@@ -64,12 +70,14 @@ public class CursoController {
 	}
 
 	@GetMapping(path = "/participantes/finalizados")
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public Iterable<Curso> getCursosFinalizados(@RequestParam Integer idParticipante) {
 		Iterable<Curso> cursosFinalizados = cursoService.getCursosFinalizadosPorParticipante(idParticipante);
 		return cursosFinalizados;
 	}
 
 	@GetMapping(path = "/orgaycateg")
+	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public Iterable<Curso> getCursosPorCatOrg(@RequestParam Integer idOrganizacion, @RequestParam String categoria) {
 		Iterable<Curso> cursosPorCatOrg = cursoService.getCursosPorCatOrg(idOrganizacion, categoria);
 		return cursosPorCatOrg;
