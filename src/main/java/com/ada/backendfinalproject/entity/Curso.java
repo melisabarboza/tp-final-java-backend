@@ -74,7 +74,7 @@ public class Curso {
 		this.nombre = nombre;
 	}
 
-	public String getDescripciion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 

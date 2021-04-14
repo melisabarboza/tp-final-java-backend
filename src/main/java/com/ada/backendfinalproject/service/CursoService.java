@@ -14,6 +14,15 @@ import com.ada.backendfinalproject.solicitudes.FormNewCurso;
 
 @Service
 public class CursoService {
+
+	public CursoService() {
+	}
+
+	public CursoService(CursoRepository cursoRepository, InscripcionService inscripcionService) {
+		this.cursoRepository = cursoRepository;
+		this.inscripcionService = inscripcionService;
+	}
+
 	@Autowired
 	CursoRepository cursoRepository;
 

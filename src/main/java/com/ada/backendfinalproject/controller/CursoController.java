@@ -20,6 +20,14 @@ import com.ada.backendfinalproject.solicitudes.FormNewCurso;
 @RequestMapping(path = "/cursos")
 public class CursoController {
 
+	public CursoController() {
+
+	}
+
+	public CursoController(CursoService cursoService) {
+		this.cursoService = cursoService;
+	}
+
 	@Autowired
 	private CursoService cursoService;
 

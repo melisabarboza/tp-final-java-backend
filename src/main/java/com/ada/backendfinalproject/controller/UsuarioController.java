@@ -24,7 +24,6 @@ import com.ada.backendfinalproject.entity.Representante;
 import com.ada.backendfinalproject.entity.Usuario;
 import com.ada.backendfinalproject.security.Constants;
 import com.ada.backendfinalproject.security.TokenProvider;
-import com.ada.backendfinalproject.service.AdminService;
 import com.ada.backendfinalproject.service.ParticipanteService;
 import com.ada.backendfinalproject.service.RepresentanteService;
 import com.ada.backendfinalproject.service.UsuarioService;
@@ -37,14 +36,22 @@ import com.ada.backendfinalproject.solicitudes.FormUsuario;
 @RequestMapping(path = "/usuario")
 public class UsuarioController {
 
+	public UsuarioController() {
+
+	}
+
+	public UsuarioController(ParticipanteService participanteService, RepresentanteService representanteService,
+			UsuarioService usuarioService) {
+		this.participanteService = participanteService;
+		this.representanteService = representanteService;
+		this.usuarioService = usuarioService;
+	}
+
 	@Autowired
 	ParticipanteService participanteService;
 
 	@Autowired
 	RepresentanteService representanteService;
-
-	@Autowired
-	AdminService adminService;
 
 	@Autowired
 	UsuarioService usuarioService;
