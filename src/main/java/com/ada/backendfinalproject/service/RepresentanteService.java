@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ada.backendfinalproject.entity.Organizacion;
 import com.ada.backendfinalproject.entity.Representante;
 import com.ada.backendfinalproject.entity.Usuario;
 import com.ada.backendfinalproject.repository.RepresentanteRepository;
@@ -19,25 +20,18 @@ public class RepresentanteService {
 	@Autowired
 	UsuarioService usuarioService;
 
-	public Representante addNew(FormRepresentante solicitud) {
-		// Validar que la organizacion este aprobada
-		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(solicitud.getUsuario());
-		Representante representante = new Representante(usuario.get(), solicitud.getIdOrganizacion(),
-				solicitud.getNombreApellido(), solicitud.getDni(), solicitud.getCargo(), solicitud.getEmail());
-
-		representanteRepository.save(representante);
-		return representante;
-
-	}
+	@Autowired
+	OrganizacionService organizacionService;
 
 	public Representante reemplazarInformacion(FormRepresentante solicitud) {
 		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(solicitud.getUsuario());
-		Optional<Representante> optRepresentante = representanteRepository.findById(usuario.get().getIdUsuario());
+		Optional<Organizacion> organizacion = organizacionService.findById(solicitud.getIdOrganizacion());
 
+		Optional<Representante> optRepresentante = representanteRepository.findById(usuario.get().getIdUsuario());
 		if (optRepresentante.isPresent())
 			representanteRepository.delete(optRepresentante.get());
 
-		Representante representante = new Representante(usuario.get(), solicitud.getIdOrganizacion(),
+		Representante representante = new Representante(usuario.get(), organizacion.get(),
 				solicitud.getNombreApellido(), solicitud.getDni(), solicitud.getCargo(), solicitud.getEmail());
 
 		return representanteRepository.save(representante);

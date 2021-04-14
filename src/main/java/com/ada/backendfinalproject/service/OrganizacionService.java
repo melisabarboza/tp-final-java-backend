@@ -1,5 +1,7 @@
 package com.ada.backendfinalproject.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +30,9 @@ public class OrganizacionService {
 
 		return result;
 	}
+
+	public Optional<Organizacion> findById(Integer idOrganizacion) {
+		return organizacionRepository.findById(idOrganizacion);
+	}
+
 }

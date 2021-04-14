@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
@@ -17,8 +18,8 @@ public class Representante {
 	@MapsId
 	private Usuario usuario;
 
-	@Column(name = "id_organizacion")
-	Integer idOrganizacion;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Organizacion organizacion;
 
 	@Column(name = "nombre_apellido")
 	String nombreApellido;
@@ -36,10 +37,10 @@ public class Representante {
 
 	}
 
-	public Representante(Usuario usuario, Integer idOrganizacion, String nombreApellido, Long dni, String cargo,
+	public Representante(Usuario usuario, Organizacion organizacion, String nombreApellido, Long dni, String cargo,
 			String email) {
 		super();
-		this.idOrganizacion = idOrganizacion;
+		this.organizacion = organizacion;
 		this.usuario = usuario;
 		this.nombreApellido = nombreApellido;
 		this.dni = dni;
@@ -55,12 +56,12 @@ public class Representante {
 		this.id = id;
 	}
 
-	public Integer getIdOrganizacion() {
-		return idOrganizacion;
+	public Organizacion getOrganizacion() {
+		return organizacion;
 	}
 
-	public void setIdOrganizacion(Integer idOrganizacion) {
-		this.idOrganizacion = idOrganizacion;
+	public void setOrganizacion(Organizacion organizacion) {
+		this.organizacion = organizacion;
 	}
 
 	public String getNombreApellido() {
