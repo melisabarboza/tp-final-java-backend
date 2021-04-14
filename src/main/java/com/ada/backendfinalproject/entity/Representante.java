@@ -2,23 +2,23 @@ package com.ada.backendfinalproject.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Representante {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	Integer idRepresentante;
+	private Integer id;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
+	private Usuario usuario;
 
 	@Column(name = "id_organizacion")
 	Integer idOrganizacion;
-
-	@Column(name = "usuario")
-	String usuario;
 
 	@Column(name = "nombre_apellido")
 	String nombreApellido;
@@ -36,10 +36,9 @@ public class Representante {
 
 	}
 
-	public Representante(Integer idRepresentante, Integer idOrganizacion, String usuario, String nombreApellido,
-			Long dni, String cargo, String email) {
+	public Representante(Usuario usuario, Integer idOrganizacion, String nombreApellido, Long dni, String cargo,
+			String email) {
 		super();
-		this.idRepresentante = idRepresentante;
 		this.idOrganizacion = idOrganizacion;
 		this.usuario = usuario;
 		this.nombreApellido = nombreApellido;
@@ -48,20 +47,12 @@ public class Representante {
 		this.email = email;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public Integer getIdRepresentante() {
-		return idRepresentante;
-	}
-
-	public void setIdRepresentante(Integer idRepresentante) {
-		this.idRepresentante = idRepresentante;
+	public void setUsuarioId(Integer id) {
+		this.id = id;
 	}
 
 	public Integer getIdOrganizacion() {

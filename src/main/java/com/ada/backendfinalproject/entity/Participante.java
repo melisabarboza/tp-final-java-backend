@@ -4,20 +4,19 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Participante {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	Integer idParticipante;
-
-	@Column(name = "usuario")
-	String usuario;
+	private Integer id;
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
+	private Usuario usuario;
 
 	@Column(name = "nombre_apellido")
 	String nombreApellido;
@@ -50,11 +49,10 @@ public class Participante {
 
 	}
 
-	public Participante(Integer idParticipante, String usuario, String nombreApellido, Date fn, String genero,
-			String domicilio, boolean estaEstudiando, boolean estaTrabajando, boolean tieneIngresos,
-			Integer ingresoMensual, Integer familiaresACargo) {
+	public Participante(Usuario usuario, String nombreApellido, Date fn, String genero, String domicilio,
+			boolean estaEstudiando, boolean estaTrabajando, boolean tieneIngresos, Integer ingresoMensual,
+			Integer familiaresACargo) {
 		super();
-		this.idParticipante = idParticipante;
 		this.usuario = usuario;
 		this.nombreApellido = nombreApellido;
 		this.fn = fn;
@@ -77,12 +75,12 @@ public class Participante {
 		return false;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuarioId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombreApellido() {

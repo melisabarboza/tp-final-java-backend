@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class FormParticipante {
 
-	Integer id;
 	String usuario;
 	String nombreApellido;
 	Date fechaDeNacimiento;
@@ -18,14 +17,6 @@ public class FormParticipante {
 
 	public String getNombreApellido() {
 		return nombreApellido;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public void setNombreApellido(String nombreApellido) {

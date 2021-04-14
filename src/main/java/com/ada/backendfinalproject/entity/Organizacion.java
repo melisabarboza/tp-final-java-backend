@@ -35,9 +35,6 @@ public class Organizacion {
 	@Column(name = "numero_contacto")
 	Integer numeroDeContacto;
 
-	@Column(name = "id_representante")
-	Integer idRepresentante;
-
 	@Column(name = "estado_organizacion")
 	String estadoOrganizacion;
 
@@ -46,8 +43,7 @@ public class Organizacion {
 	}
 
 	public Organizacion(Integer idOrganizacion, String nombre, Long cuil, Integer tipo, String direccion,
-			String categoria, Integer añoDeFundacion, Integer numeroDeContacto, Integer idRepresentante,
-			String estadoOrganizacion) {
+			String categoria, Integer añoDeFundacion, Integer numeroDeContacto, String estadoOrganizacion) {
 		super();
 		this.idOrganizacion = idOrganizacion;
 		this.nombre = nombre;
@@ -57,7 +53,6 @@ public class Organizacion {
 		this.categoria = categoria;
 		this.añoDeFundacion = añoDeFundacion;
 		this.numeroDeContacto = numeroDeContacto;
-		this.idRepresentante = idRepresentante;
 		this.estadoOrganizacion = estadoOrganizacion;
 	}
 
@@ -115,14 +110,6 @@ public class Organizacion {
 
 	public void setNumeroDeContacto(Integer numeroDeContacto) {
 		this.numeroDeContacto = numeroDeContacto;
-	}
-
-	public Integer getIdRepresentante() {
-		return idRepresentante;
-	}
-
-	public void setIdRepresentante(Integer idRepresentante) {
-		this.idRepresentante = idRepresentante;
 	}
 
 	public String getEstadoOrganizacion() {

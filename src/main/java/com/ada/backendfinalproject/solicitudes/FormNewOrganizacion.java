@@ -2,7 +2,6 @@ package com.ada.backendfinalproject.solicitudes;
 
 public class FormNewOrganizacion {
 
-	Integer idOrganizacion;
 	String nombreOrg;
 	Long cuilOrg;
 	Integer tipoOrg;
@@ -10,7 +9,7 @@ public class FormNewOrganizacion {
 	String categoriaOrg;
 	Integer añoDeFundacionOrg;
 	Integer numeroDeContacto;
-	Integer idRepresentanteOrg;
+
 	String estadoOrganizacion = "pendiente aprobacion";
 
 	public String getNombreOrg() {
@@ -67,22 +66,6 @@ public class FormNewOrganizacion {
 
 	public void setNumeroDeContacto(Integer numeroDeContacto) {
 		this.numeroDeContacto = numeroDeContacto;
-	}
-
-	public Integer getIdRepresentanteOrg() {
-		return idRepresentanteOrg;
-	}
-
-	public void setIdRepresentanteOrg(Integer idRepresentanteOrg) {
-		this.idRepresentanteOrg = idRepresentanteOrg;
-	}
-
-	public Integer getIdOrganizacion() {
-		return idOrganizacion;
-	}
-
-	public void setIdOrganizacion(Integer idOrganizacion) {
-		this.idOrganizacion = idOrganizacion;
 	}
 
 	public String getEstadoOrganizacion() {

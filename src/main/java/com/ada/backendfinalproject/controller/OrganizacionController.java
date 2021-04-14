@@ -21,7 +21,7 @@ public class OrganizacionController {
 	private OrganizacionService organizacionService;
 
 	@PostMapping(path = "/registro")
-	@PreAuthorize("hasRole('ROLE_REPRESENTANTE')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public @ResponseBody Organizacion addNewOrganizacion(@RequestBody FormNewOrganizacion solicitud) throws Exception {
 
 		// valido que lleguen los parametros necesarios para guardar una organizacion

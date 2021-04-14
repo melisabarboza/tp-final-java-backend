@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ada.backendfinalproject.entity.Participante;
+import com.ada.backendfinalproject.entity.Usuario;
 import com.ada.backendfinalproject.repository.ParticipanteRepository;
 import com.ada.backendfinalproject.solicitudes.FormParticipante;
 
@@ -14,30 +15,22 @@ public class ParticipanteService {
 	@Autowired
 	ParticipanteRepository participanteRepository;
 
-	public Participante addNewParticipante(FormParticipante solicitud) {
+	@Autowired
+	UsuarioService usuarioService;
 
-		Participante participante = new Participante(0, solicitud.getUsuario(), solicitud.getNombreApellido(),
-				solicitud.getFechaDeNacimiento(), solicitud.getGenero(), solicitud.getDomicilio(),
-				solicitud.isEstaEstudiando(), solicitud.isEstaTrabajando(), solicitud.isTieneIngresos(),
-				solicitud.getIngresoMensual(), solicitud.getFamiliaresACargo());
-		participanteRepository.save(participante);
-
+	public Optional<Participante> getParticipanteById(Integer idUsuario) {
+		Optional<Participante> participante = participanteRepository.findById(idUsuario);
 		return participante;
-	}
-
-	public Optional<Participante> getParticipanteById(Integer idParticipante) {
-
-		Optional<Participante> participante = participanteRepository.findById(idParticipante);
-		return participante;
-
 	}
 
 	public Participante reemplazarInformacion(FormParticipante solicitud) {
-		Optional<Participante> optParticipante = participanteRepository.findByUsuario(solicitud.getUsuario());
+		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(solicitud.getUsuario());
+
+		Optional<Participante> optParticipante = participanteRepository.findById(usuario.get().getIdUsuario());
 		if (optParticipante.isPresent())
 			participanteRepository.delete(optParticipante.get());
 
-		Participante participante = new Participante(0, solicitud.getUsuario(), solicitud.getNombreApellido(),
+		Participante participante = new Participante(usuario.get(), solicitud.getNombreApellido(),
 				solicitud.getFechaDeNacimiento(), solicitud.getGenero(), solicitud.getDomicilio(),
 				solicitud.isEstaEstudiando(), solicitud.isEstaTrabajando(), solicitud.isTieneIngresos(),
 				solicitud.getIngresoMensual(), solicitud.getFamiliaresACargo());

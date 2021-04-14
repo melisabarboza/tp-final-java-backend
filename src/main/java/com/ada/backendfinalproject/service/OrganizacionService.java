@@ -22,8 +22,7 @@ public class OrganizacionService {
 
 		Organizacion organizacion = new Organizacion(0, solicitud.getNombreOrg(), solicitud.getCuilOrg(),
 				solicitud.getTipoOrg(), solicitud.getDireccionOrg(), solicitud.getCategoriaOrg(),
-				solicitud.getAñoDeFundacionOrg(), solicitud.getNumeroDeContacto(), solicitud.getIdRepresentanteOrg(),
-				solicitud.getEstadoOrganizacion());
+				solicitud.getAñoDeFundacionOrg(), solicitud.getNumeroDeContacto(), solicitud.getEstadoOrganizacion());
 
 		Organizacion result = organizacionRepository.save(organizacion);
 

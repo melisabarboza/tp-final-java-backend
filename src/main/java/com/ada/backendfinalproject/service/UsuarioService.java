@@ -70,4 +70,8 @@ public class UsuarioService implements UserDetailsService {
 		return authorities;
 	}
 
+	public Optional<Usuario> getUsuarioByUsuario(String username) {
+		return usuarioRepository.findByUsuario(username);
+	}
+
 }
