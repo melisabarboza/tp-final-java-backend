@@ -50,7 +50,7 @@ public class Participante {
 	}
 
 	public Participante(Usuario usuario, String nombreApellido, Date fn, String genero, String domicilio,
-			boolean estaEstudiando, boolean estaTrabajando, boolean tieneIngresos, Integer ingresoMensual,
+			Boolean estaEstudiando, Boolean estaTrabajando, Boolean tieneIngresos, Integer ingresoMensual,
 			Integer familiaresACargo) {
 		super();
 		this.usuario = usuario;
@@ -115,7 +115,7 @@ public class Participante {
 		this.domicilio = domicilio;
 	}
 
-	public boolean isEstaEstudiando() {
+	public Boolean isEstaEstudiando() {
 		return estaEstudiando;
 	}
 
@@ -123,7 +123,7 @@ public class Participante {
 		this.estaEstudiando = estaEstudiando;
 	}
 
-	public boolean isEstaTrabajando() {
+	public Boolean isEstaTrabajando() {
 		return estaTrabajando;
 	}
 
@@ -131,7 +131,7 @@ public class Participante {
 		this.estaTrabajando = estaTrabajando;
 	}
 
-	public boolean isTieneIngresos() {
+	public Boolean isTieneIngresos() {
 		return tieneIngresos;
 	}
 

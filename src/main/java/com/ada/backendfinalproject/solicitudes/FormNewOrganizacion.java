@@ -1,5 +1,7 @@
 package com.ada.backendfinalproject.solicitudes;
 
+import com.ada.backendfinalproject.entity.enums.EstadoOrganizacion;
+
 public class FormNewOrganizacion {
 
 	String nombreOrg;
@@ -10,7 +12,7 @@ public class FormNewOrganizacion {
 	Integer añoDeFundacionOrg;
 	Integer numeroDeContacto;
 
-	String estadoOrganizacion = "pendiente aprobacion";
+	String estadoOrganizacion = EstadoOrganizacion.PENDIENTE.name();
 
 	public String getNombreOrg() {
 		return nombreOrg;

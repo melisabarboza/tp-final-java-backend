@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ada.backendfinalproject.entity.Organizacion;
 import com.ada.backendfinalproject.service.OrganizacionService;
+import com.ada.backendfinalproject.solicitudes.FormCambiarEstadoOrganizacion;
 import com.ada.backendfinalproject.solicitudes.FormNewOrganizacion;
 
 @RestController
@@ -24,10 +25,6 @@ public class OrganizacionController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public @ResponseBody Organizacion addNewOrganizacion(@RequestBody FormNewOrganizacion solicitud) throws Exception {
 
-		// valido que lleguen los parametros necesarios para guardar una organizacion
-		// if (solicitud.getNombreOrg() == null || solicitud.getCuilOrg() == 0) {
-		// throw new Exception("la solicitud debe contener un nombre valido");
-		// }
 		// TODO: agregar otras validaciones
 
 		Organizacion organizacionRegistrada = organizacionService.addNewOrganizacion(solicitud);
@@ -35,5 +32,12 @@ public class OrganizacionController {
 		return organizacionRegistrada;
 	}
 
-	// CAMBIAR ESTADO ORG
+	@PostMapping(path = "/estado")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public @ResponseBody Organizacion cambiarEstado(@RequestBody FormCambiarEstadoOrganizacion solicitud)
+			throws Exception {
+
+		return organizacionService.cambiarEstado(solicitud);
+
+	}
 }

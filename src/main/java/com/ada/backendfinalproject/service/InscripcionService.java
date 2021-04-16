@@ -89,7 +89,7 @@ public class InscripcionService {
 			throw new Exception("Inscripcion no encontrada");
 		}
 
-		if (inscripcion.get().getEstadoInscripcion() != EstadoInscripcion.PENDIENTE.name()) {
+		if (!inscripcion.get().getEstadoInscripcion().equals(EstadoInscripcion.PENDIENTE.name())) {
 			throw new Exception("El estado de la inscripción ya fue modificado anteriormente");
 		}
 

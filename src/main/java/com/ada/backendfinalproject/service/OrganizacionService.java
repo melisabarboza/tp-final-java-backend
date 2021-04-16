@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ada.backendfinalproject.entity.Organizacion;
+import com.ada.backendfinalproject.entity.enums.EstadoOrganizacion;
 import com.ada.backendfinalproject.repository.OrganizacionRepository;
+import com.ada.backendfinalproject.solicitudes.FormCambiarEstadoOrganizacion;
 import com.ada.backendfinalproject.solicitudes.FormNewOrganizacion;
 
 @Service
@@ -16,7 +18,6 @@ public class OrganizacionService {
 	OrganizacionRepository organizacionRepository;
 
 	public Organizacion addNewOrganizacion(FormNewOrganizacion solicitud) throws Exception {
-		// validaciones de negocio:
 
 		if (solicitud.getNombreOrg() == null || solicitud.getCuilOrg() == null) {
 			throw new Exception("No se pueden registrar organizacion sin nombre/cuil");
@@ -35,4 +36,15 @@ public class OrganizacionService {
 		return organizacionRepository.findById(idOrganizacion);
 	}
 
+	public Organizacion cambiarEstado(FormCambiarEstadoOrganizacion solicitud) throws Exception {
+		Optional<Organizacion> org = organizacionRepository.findById(solicitud.getIdOrganizacion());
+		if (org.isPresent()) {
+			EstadoOrganizacion nuevoEstado = solicitud.getEstado();
+			org.get().setEstadoOrganizacion(nuevoEstado.name());
+			Organizacion result = organizacionRepository.save(org.get());
+			return result;
+		} else {
+			throw new Exception("El id recibido es inexistente");
+		}
+	}
 }

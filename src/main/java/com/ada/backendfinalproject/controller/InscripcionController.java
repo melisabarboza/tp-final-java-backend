@@ -15,7 +15,7 @@ import com.ada.backendfinalproject.solicitudes.FormFinalizarInscripcion;
 import com.ada.backendfinalproject.solicitudes.FormNewInscripcion;
 
 @RestController
-@RequestMapping(path = "/inscripciones")
+@RequestMapping(path = "/inscripcion")
 public class InscripcionController {
 
 	@Autowired
@@ -25,11 +25,6 @@ public class InscripcionController {
 	@PreAuthorize("hasRole('ROLE_PARTICIPANTE')")
 	public @ResponseBody Inscripcion add(@RequestBody FormNewInscripcion solicitud) throws Exception {
 
-		// valido que lleguen los parametros necesarios para guardar una inscripcion
-
-		// if (solicitud.getNombre() == null || solicitud.getNombre() == "") {
-		// throw new Exception("la solicitud debe contener un nombre valido");
-		// }
 		// TODO: agregar otras validaciones
 
 		Inscripcion newInscripcion = inscripcionService.addNewInscripcion(solicitud);

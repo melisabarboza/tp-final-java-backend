@@ -27,7 +27,11 @@ public class Inscripcion {
 	Integer porcentajeBeca;
 
 	@Column(name = "estado_inscripcion")
-	String estadoInscripcion; // pendiente, aprobada, desaprobada
+	String estadoInscripcion;
+
+	public Inscripcion() {
+
+	}
 
 	public Inscripcion(Integer idInscripcion, Integer idCurso, Integer idParticipante, Boolean solicitaBeca,
 			Integer porcentajeBeca, String estadoInscripcion) {
