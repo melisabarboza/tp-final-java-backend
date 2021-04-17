@@ -2,9 +2,11 @@ package com.ada.backendfinalproject.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Inscripcion {
@@ -14,11 +16,11 @@ public class Inscripcion {
 	@Column(name = "id")
 	Integer idInscripcion;
 
-	@Column(name = "id_curso")
-	Integer idCurso;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Participante participante;
 
-	@Column(name = "id_participante")
-	Integer idParticipante;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Curso curso;
 
 	@Column(name = "solicita_beca")
 	Boolean solicitaBeca;
@@ -33,12 +35,12 @@ public class Inscripcion {
 
 	}
 
-	public Inscripcion(Integer idInscripcion, Integer idCurso, Integer idParticipante, Boolean solicitaBeca,
+	public Inscripcion(Integer idInscripcion, Curso curso, Participante participante, Boolean solicitaBeca,
 			Integer porcentajeBeca, String estadoInscripcion) {
 		super();
 		this.idInscripcion = idInscripcion;
-		this.idCurso = idCurso;
-		this.idParticipante = idParticipante;
+		this.curso = curso;
+		this.participante = participante;
 		this.solicitaBeca = solicitaBeca;
 		this.porcentajeBeca = porcentajeBeca;
 		this.estadoInscripcion = estadoInscripcion;
@@ -76,19 +78,20 @@ public class Inscripcion {
 		this.idInscripcion = idInscripcion;
 	}
 
-	public Integer getIdCurso() {
-		return idCurso;
+	public Participante getParticipante() {
+		return participante;
 	}
 
-	public void setIdCurso(Integer idCurso) {
-		this.idCurso = idCurso;
+	public void setParticipante(Participante participante) {
+		this.participante = participante;
 	}
 
-	public Integer getIdParticipante() {
-		return idParticipante;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setIdParticipante(Integer idParticipante) {
-		this.idParticipante = idParticipante;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
+
 }

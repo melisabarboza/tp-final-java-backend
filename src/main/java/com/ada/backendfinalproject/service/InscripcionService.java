@@ -41,43 +41,46 @@ public class InscripcionService {
 			throw new Exception("IdCurso invalido");
 		}
 
-		Inscripcion inscripcion = new Inscripcion(0, solicitud.getIdCurso(), solicitud.getIdParticipante(),
-				solicitud.getSolicitaBeca(), null, EstadoInscripcion.PENDIENTE.name());
+		Optional<Participante> optParticipante = participanteService.getParticipanteById(solicitud.getIdParticipante());
+		if (!optParticipante.isPresent())
+			throw new Exception("Participante inexistente");
+
+		Inscripcion inscripcion = new Inscripcion(0, cursoOpt.get(), optParticipante.get(), solicitud.getSolicitaBeca(),
+				null, EstadoInscripcion.PENDIENTE.name());
 
 		if (solicitud.getSolicitaBeca()) {
-			Optional<Participante> optParticipante = participanteService
-					.getParticipanteById(solicitud.getIdParticipante());
 
-			if (optParticipante.isPresent()) {
-				Participante participante = optParticipante.get();
+			if (cursoOpt.get().getBecasDisponibles() < 1) {
+				throw new Exception("El curso no posee becas disponibles");
+			}
 
-				if (participante.DatosSocioEconomicosCargados()) {
-					return inscripcionRepository.save(inscripcion);
-				} else
-					throw new Exception("Datos socioeconomicos no cargados");
+			if (optParticipante.get().DatosSocioEconomicosCargados()) {
+				return inscripcionRepository.save(inscripcion);
 			} else
-				throw new Exception("Participante inexistente");
+				throw new Exception("Datos socioeconomicos no cargados");
+
 		} else {
 			inscripcion.setEstadoInscripcion(EstadoInscripcion.APROBADO.name());
 			cursoService.restarVacante(solicitud.getIdCurso());
 			return inscripcionRepository.save(inscripcion);
 		}
+
 	}
 
 	public Iterable<Inscripcion> getInscripcionPorIdParticipante(Integer idParticipante) {
-		Iterable<Inscripcion> itInscripciones = inscripcionRepository.findByIdParticipante(idParticipante);
+		Iterable<Inscripcion> itInscripciones = inscripcionRepository.findByParticipanteId(idParticipante);
 		return itInscripciones;
 	}
 
 	public Iterable<Inscripcion> getInscripcionAprobadasPorIdParticipante(Integer idParticipante) {
 		Iterable<Inscripcion> itInscripciones = inscripcionRepository
-				.findByIdParticipanteAndEstadoInscripcion(idParticipante, EstadoInscripcion.APROBADO.name());
+				.findByParticipanteIdAndEstadoInscripcion(idParticipante, EstadoInscripcion.APROBADO.name());
 		return itInscripciones;
 	}
 
 	public Iterable<Inscripcion> getInscripcionFinalizadaPorIdParticipante(Integer idParticipante) {
 		Iterable<Inscripcion> itInscripciones = inscripcionRepository
-				.findByIdParticipanteAndEstadoInscripcion(idParticipante, EstadoInscripcion.FINALIZADO.name());
+				.findByParticipanteIdAndEstadoInscripcion(idParticipante, EstadoInscripcion.FINALIZADO.name());
 		return itInscripciones;
 	}
 
@@ -105,7 +108,7 @@ public class InscripcionService {
 
 		if (solicitud.getEstado() == EstadoInscripcion.APROBADO) {
 			inscripcion.get().setPorcentajeBeca(solicitud.getPorcentajeBeca());
-			cursoService.restarVacanteYBeca(inscripcion.get().getIdCurso());
+			cursoService.restarVacanteYBeca(inscripcion.get().getCurso().getId());
 		}
 
 		return inscripcionRepository.save(inscripcion.get());

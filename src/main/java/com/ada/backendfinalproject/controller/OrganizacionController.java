@@ -15,14 +15,14 @@ import com.ada.backendfinalproject.solicitudes.FormNewOrganizacion;
 
 @RestController
 
-@RequestMapping(path = "/organizaciones")
+@RequestMapping(path = "/organizacion")
 public class OrganizacionController {
 
 	@Autowired
 	private OrganizacionService organizacionService;
 
 	@PostMapping(path = "/registro")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_REPRESENTANTE') ")
 	public @ResponseBody Organizacion addNewOrganizacion(@RequestBody FormNewOrganizacion solicitud) throws Exception {
 
 		// TODO: agregar otras validaciones

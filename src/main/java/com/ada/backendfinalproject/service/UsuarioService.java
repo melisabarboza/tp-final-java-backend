@@ -20,6 +20,7 @@ import com.ada.backendfinalproject.solicitudes.FormUsuario;
 
 @Service("userDetailsService")
 public class UsuarioService implements UserDetailsService {
+
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
@@ -27,7 +28,7 @@ public class UsuarioService implements UserDetailsService {
 		Optional<Usuario> user = usuarioRepository.findByUsuario(usuario);
 
 		if (user == null) {
-			throw new UsernameNotFoundException("usuario o contraseña invalidas");
+			throw new UsernameNotFoundException("Usuario o contraseña invalidas");
 		}
 
 		return UserDetailsMapper.build(user.get());

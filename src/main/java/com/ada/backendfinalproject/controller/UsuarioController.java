@@ -36,17 +36,6 @@ import com.ada.backendfinalproject.solicitudes.FormUsuario;
 @RequestMapping(path = "/usuario")
 public class UsuarioController {
 
-	public UsuarioController() {
-
-	}
-
-	public UsuarioController(ParticipanteService participanteService, RepresentanteService representanteService,
-			UsuarioService usuarioService) {
-		this.participanteService = participanteService;
-		this.representanteService = representanteService;
-		this.usuarioService = usuarioService;
-	}
-
 	@Autowired
 	ParticipanteService participanteService;
 
@@ -108,5 +97,16 @@ public class UsuarioController {
 			return ResponseEntity.status(HttpStatus.OK).body(newUsuario.get());
 		}
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body("usuario o contraseña invalidas");
+	}
+
+	public UsuarioController() {
+
+	}
+
+	public UsuarioController(ParticipanteService participanteService, RepresentanteService representanteService,
+			UsuarioService usuarioService) {
+		this.participanteService = participanteService;
+		this.representanteService = representanteService;
+		this.usuarioService = usuarioService;
 	}
 }

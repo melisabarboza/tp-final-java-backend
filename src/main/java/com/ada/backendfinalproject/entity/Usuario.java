@@ -25,14 +25,6 @@ public class Usuario {
 	@Column(name = "rol")
 	String rol;
 
-	public RolUsuario getRol() {
-		return RolUsuario.valueOf(this.rol);
-	}
-
-	public void setRol(RolUsuario rol) {
-		this.rol = rol.name();
-	}
-
 	public Usuario() {
 
 	}
@@ -43,6 +35,14 @@ public class Usuario {
 		this.contraseña = contraseña;
 		this.rol = rol.name();
 
+	}
+
+	public RolUsuario getRol() {
+		return RolUsuario.valueOf(this.rol);
+	}
+
+	public void setRol(RolUsuario rol) {
+		this.rol = rol.name();
 	}
 
 	public Integer getIdUsuario() {

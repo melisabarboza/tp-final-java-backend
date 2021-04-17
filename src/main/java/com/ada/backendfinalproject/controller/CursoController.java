@@ -17,16 +17,8 @@ import com.ada.backendfinalproject.service.CursoService;
 import com.ada.backendfinalproject.solicitudes.FormNewCurso;
 
 @RestController
-@RequestMapping(path = "/cursos")
+@RequestMapping(path = "/curso")
 public class CursoController {
-
-	public CursoController() {
-
-	}
-
-	public CursoController(CursoService cursoService) {
-		this.cursoService = cursoService;
-	}
 
 	@Autowired
 	private CursoService cursoService;
@@ -35,7 +27,6 @@ public class CursoController {
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE')")
 	public @ResponseBody Curso addNewCurso(@RequestBody FormNewCurso solicitud) throws Exception {
 
-		// valido que lleguen los parametros necesarios para guardar un curso
 		if (solicitud.getNombre() == null || solicitud.getNombre() == "") {
 			throw new Exception("la solicitud debe contener un nombre valido");
 		}
@@ -45,7 +36,7 @@ public class CursoController {
 		return cursoCreado;
 	}
 
-	@GetMapping(path = "/disponibles") // cursos disponibles (con cupos abiertos)
+	@GetMapping(path = "/disponible") // cursos disponibles (con cupos abiertos)
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody List<Curso> getCursosDisponibles() {
 
@@ -53,7 +44,7 @@ public class CursoController {
 		return cursosDisponibles;
 	}
 
-	@GetMapping(path = "/categorias") // Todos los cursos por categoría public
+	@GetMapping(path = "/categoria") // Todos los cursos por categoría public
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody List<Curso> getCursosPorCategorias(@RequestParam String categoria) {
 
@@ -61,7 +52,7 @@ public class CursoController {
 		return cursosPorCategoria;
 	}
 
-	@GetMapping(path = "/organizaciones") // Todos los cursos por organización
+	@GetMapping(path = "/organizacion") // Todos los cursos por organización
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody List<Curso> getCursosPorOrganizacion(@RequestParam Integer idOrganizacion) {
 
@@ -69,7 +60,7 @@ public class CursoController {
 		return cursosPorOrganizacion;
 	}
 
-	@GetMapping(path = "/participantes/progreso") // Todos los cursos por participante (en progreso)
+	@GetMapping(path = "/participante/progreso") // Todos los cursos por participante (en progreso)
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public @ResponseBody Iterable<Curso> getCursosEnProgresoPorParticipante(@RequestParam Integer idParticipante) {
 
@@ -77,18 +68,26 @@ public class CursoController {
 		return cursosEnProgreso;
 	}
 
-	@GetMapping(path = "/participantes/finalizados")
+	@GetMapping(path = "/participante/finalizado")
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public Iterable<Curso> getCursosFinalizados(@RequestParam Integer idParticipante) {
 		Iterable<Curso> cursosFinalizados = cursoService.getCursosFinalizadosPorParticipante(idParticipante);
 		return cursosFinalizados;
 	}
 
-	@GetMapping(path = "/orgaycateg")
+	@GetMapping(path = "/org/categoria")
 	@PreAuthorize("hasRole('ROLE_REPRESENTANTE') OR hasRole('ROLE_ADMIN') OR hasRole('ROLE_PARTICIPANTE')  ")
 	public Iterable<Curso> getCursosPorCatOrg(@RequestParam Integer idOrganizacion, @RequestParam String categoria) {
 		Iterable<Curso> cursosPorCatOrg = cursoService.getCursosPorCatOrg(idOrganizacion, categoria);
 		return cursosPorCatOrg;
+	}
+
+	public CursoController() {
+
+	}
+
+	public CursoController(CursoService cursoService) {
+		this.cursoService = cursoService;
 	}
 
 }

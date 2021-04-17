@@ -15,7 +15,14 @@ import com.ada.backendfinalproject.solicitudes.FormNewCurso;
 @Service
 public class CursoService {
 
+	@Autowired
+	CursoRepository cursoRepository;
+
+	@Autowired
+	InscripcionService inscripcionService;
+
 	public CursoService() {
+
 	}
 
 	public CursoService(CursoRepository cursoRepository, InscripcionService inscripcionService) {
@@ -23,18 +30,8 @@ public class CursoService {
 		this.inscripcionService = inscripcionService;
 	}
 
-	@Autowired
-	CursoRepository cursoRepository;
-
-	@Autowired
-	InscripcionService inscripcionService;
-
 	public Curso addNewCurso(FormNewCurso solicitud) throws Exception {
 
-		// validaciones de negocio:
-		// si el numero de participantes es menor o igual a 0, entonces ERROR
-		// validar que las horas sean mayores a 0
-		// validar que el costo no sea negativo
 		if (solicitud.getNumeroParticipantes() <= 0) {
 			throw new Exception("No se pueden crear un curso sin cupos de participantes");
 		}
@@ -81,13 +78,11 @@ public class CursoService {
 
 		Iterable<Inscripcion> inscripcionesDelParticipante = inscripcionService
 				.getInscripcionAprobadasPorIdParticipante(idParticipante);
-		// Creo una lista inscripcion y guardo las inscripciones con ese ID recibido
 
 		List<Integer> listaIdCursoParticipante = new ArrayList<Integer>();
 		inscripcionesDelParticipante.forEach(inscripcion -> {
-			listaIdCursoParticipante.add(inscripcion.getIdCurso());
+			listaIdCursoParticipante.add(inscripcion.getCurso().getId());
 		});
-		// Creo otra lista con los Id curso que extraigo de la lista anterior
 
 		Iterable<Curso> cursosDelParticipante = cursoRepository.findAllById(listaIdCursoParticipante);
 
@@ -122,7 +117,7 @@ public class CursoService {
 
 		List<Integer> listaIdCursoParticipante = new ArrayList<Integer>();
 		inscripcionesDelParticipante.forEach(inscripcion -> {
-			listaIdCursoParticipante.add(inscripcion.getIdCurso());
+			listaIdCursoParticipante.add(inscripcion.getCurso().getId());
 		});
 
 		Iterable<Curso> cursosDelParticipante = cursoRepository.findAllById(listaIdCursoParticipante);
