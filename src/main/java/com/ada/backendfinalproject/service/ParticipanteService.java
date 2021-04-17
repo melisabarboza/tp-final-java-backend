@@ -23,8 +23,8 @@ public class ParticipanteService {
 		return participante;
 	}
 
-	public Participante reemplazarInformacion(FormParticipante solicitud) {
-		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(solicitud.getUsuario());
+	public Participante reemplazarInformacion(FormParticipante solicitud, String currentPrincipalName) {
+		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(currentPrincipalName);
 
 		Optional<Participante> optParticipante = participanteRepository.findById(usuario.get().getIdUsuario());
 		if (optParticipante.isPresent())

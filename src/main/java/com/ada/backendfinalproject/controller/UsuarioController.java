@@ -51,11 +51,8 @@ public class UsuarioController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
-		if (!solicitud.getUsuario().equals(currentPrincipalName)) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("usuario a modificar invalido");
-		}
 
-		Participante newPaticipate = participanteService.reemplazarInformacion(solicitud);
+		Participante newPaticipate = participanteService.reemplazarInformacion(solicitud, currentPrincipalName);
 
 		return ResponseEntity.status(HttpStatus.OK).body(newPaticipate);
 
@@ -67,11 +64,8 @@ public class UsuarioController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
-		if (!solicitud.getUsuario().equals(currentPrincipalName)) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("usuario a modificar invalido");
-		}
 
-		Representante newRepresentante = representanteService.reemplazarInformacion(solicitud);
+		Representante newRepresentante = representanteService.reemplazarInformacion(solicitud, currentPrincipalName);
 
 		return ResponseEntity.status(HttpStatus.OK).body(newRepresentante);
 

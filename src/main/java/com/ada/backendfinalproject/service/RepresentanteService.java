@@ -23,8 +23,8 @@ public class RepresentanteService {
 	@Autowired
 	OrganizacionService organizacionService;
 
-	public Representante reemplazarInformacion(FormRepresentante solicitud) {
-		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(solicitud.getUsuario());
+	public Representante reemplazarInformacion(FormRepresentante solicitud, String currentPrincipalName) {
+		Optional<Usuario> usuario = usuarioService.getUsuarioByUsuario(currentPrincipalName);
 		Optional<Organizacion> organizacion = organizacionService.findById(solicitud.getIdOrganizacion());
 
 		Optional<Representante> optRepresentante = representanteRepository.findById(usuario.get().getIdUsuario());

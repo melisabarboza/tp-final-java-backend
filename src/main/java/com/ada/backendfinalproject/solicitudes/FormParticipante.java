@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class FormParticipante {
 
-	String usuario;
 	String nombreApellido;
 	Date fechaDeNacimiento;
 	String genero;
@@ -85,14 +84,6 @@ public class FormParticipante {
 
 	public void setFamiliaresACargo(Integer familiaresACargo) {
 		this.familiaresACargo = familiaresACargo;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
 	}
 
 }
