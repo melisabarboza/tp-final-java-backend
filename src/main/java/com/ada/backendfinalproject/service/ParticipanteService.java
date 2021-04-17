@@ -37,4 +37,8 @@ public class ParticipanteService {
 
 		return participanteRepository.save(participante);
 	}
+
+	public Optional<Participante> getParticipanteByUsuario(String nombreUsuarioLogueado) {
+		return participanteRepository.findByUsuarioUsuario(nombreUsuarioLogueado);
+	}
 }

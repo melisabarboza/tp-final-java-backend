@@ -37,6 +37,10 @@ public class Usuario {
 
 	}
 
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	public RolUsuario getRol() {
 		return RolUsuario.valueOf(this.rol);
 	}

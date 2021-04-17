@@ -19,7 +19,15 @@ public class Representante {
 	private Usuario usuario;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Organizacion organizacion;
+	Organizacion organizacion;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	@Column(name = "nombre_apellido")
 	String nombreApellido;

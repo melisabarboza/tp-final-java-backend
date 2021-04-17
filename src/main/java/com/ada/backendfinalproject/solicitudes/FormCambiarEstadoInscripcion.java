@@ -7,7 +7,6 @@ public class FormCambiarEstadoInscripcion {
 	Integer idInscripcion;
 	EstadoInscripcion estado;
 	Integer porcentajeBeca;
-	Integer idAdmin;
 
 	public Integer getIdInscripcion() {
 		return idInscripcion;
@@ -31,14 +30,6 @@ public class FormCambiarEstadoInscripcion {
 
 	public void setPorcentajeBeca(Integer porcentajeBeca) {
 		this.porcentajeBeca = porcentajeBeca;
-	}
-
-	public Integer getIdAdmin() {
-		return idAdmin;
-	}
-
-	public void setIdAdmin(Integer idAdmin) {
-		this.idAdmin = idAdmin;
 	}
 
 }

@@ -31,7 +31,6 @@ public class UsuarioControllerTest {
 
 		// creo el controller a testear
 		controller = new UsuarioController(partService, repService, usuarioService);
-
 	}
 
 	@Test
@@ -53,7 +52,7 @@ public class UsuarioControllerTest {
 
 		assertEquals("abc", result.getUsuario());
 		assertEquals("123", result.getContraseña());
-		assertEquals(RolUsuario.ADMIN, result.getRol());
+		assertEquals(RolUsuario.ADMIN.name(), result.getRol().name());
 
 	}
 

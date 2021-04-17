@@ -37,4 +37,8 @@ public class RepresentanteService {
 		return representanteRepository.save(representante);
 	}
 
+	public Optional<Representante> findByUsuario(String usuario) {
+		return representanteRepository.findByUsuarioUsuario(usuario);
+	}
+
 }

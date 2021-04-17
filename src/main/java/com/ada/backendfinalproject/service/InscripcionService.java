@@ -26,7 +26,7 @@ public class InscripcionService {
 	@Autowired
 	CursoService cursoService;
 
-	public Inscripcion addNewInscripcion(FormNewInscripcion solicitud) throws Exception {
+	public Inscripcion addNewInscripcion(FormNewInscripcion solicitud, String nombreUsuarioLogueado) throws Exception {
 
 		// TODO: Validar que el curso tenga cupos disponibles
 		Optional<Curso> cursoOpt = cursoService.getCursoById(solicitud.getIdCurso());
@@ -41,7 +41,7 @@ public class InscripcionService {
 			throw new Exception("IdCurso invalido");
 		}
 
-		Optional<Participante> optParticipante = participanteService.getParticipanteById(solicitud.getIdParticipante());
+		Optional<Participante> optParticipante = participanteService.getParticipanteByUsuario(nombreUsuarioLogueado);
 		if (!optParticipante.isPresent())
 			throw new Exception("Participante inexistente");
 

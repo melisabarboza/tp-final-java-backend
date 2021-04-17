@@ -44,7 +44,6 @@ public class Organizacion {
 
 	public Organizacion(Integer idOrganizacion, String nombre, Long cuil, Integer tipo, String direccion,
 			String categoria, Integer añoDeFundacion, Integer numeroDeContacto, String estadoOrganizacion) {
-		super();
 		this.idOrganizacion = idOrganizacion;
 		this.nombre = nombre;
 		this.cuil = cuil;

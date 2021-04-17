@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.ada.backendfinalproject.entity.Curso;
 import com.ada.backendfinalproject.entity.Inscripcion;
+import com.ada.backendfinalproject.entity.Representante;
 import com.ada.backendfinalproject.repository.CursoRepository;
 import com.ada.backendfinalproject.solicitudes.FormNewCurso;
 
@@ -21,6 +22,9 @@ public class CursoService {
 	@Autowired
 	InscripcionService inscripcionService;
 
+	@Autowired
+	RepresentanteService representanteService;
+
 	public CursoService() {
 
 	}
@@ -30,7 +34,11 @@ public class CursoService {
 		this.inscripcionService = inscripcionService;
 	}
 
-	public Curso addNewCurso(FormNewCurso solicitud) throws Exception {
+	public Curso addNewCurso(FormNewCurso solicitud, String usuario) throws Exception {
+
+		Optional<Representante> optRepresentante = representanteService.findByUsuario(usuario);
+		if (!optRepresentante.isPresent())
+			throw new Exception("representante no encontrado");
 
 		if (solicitud.getNumeroParticipantes() <= 0) {
 			throw new Exception("No se pueden crear un curso sin cupos de participantes");
@@ -38,7 +46,8 @@ public class CursoService {
 
 		Curso curso = new Curso(0, solicitud.getNombre(), solicitud.getDescripcion(), solicitud.getModalidad(),
 				solicitud.getCosto(), solicitud.getHoras(), solicitud.getCategoria(),
-				solicitud.getNumeroParticipantes(), solicitud.getBecasDisponibles(), solicitud.getIdOrganizacion());
+				solicitud.getNumeroParticipantes(), solicitud.getBecasDisponibles(),
+				optRepresentante.get().getOrganizacion().getIdOrganizacion());
 
 		Curso result = cursoRepository.save(curso);
 

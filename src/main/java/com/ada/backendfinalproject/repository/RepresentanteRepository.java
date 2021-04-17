@@ -10,6 +10,6 @@ import com.ada.backendfinalproject.entity.Representante;
 @Repository
 public interface RepresentanteRepository extends CrudRepository<Representante, Integer> {
 
-	Optional<Representante> findByUsuario(String usuario);
+	Optional<Representante> findByUsuarioUsuario(String usuario);
 
 }
